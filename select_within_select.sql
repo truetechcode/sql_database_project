@@ -23,8 +23,10 @@ SELECT name, population FROM world
   WHERE name = 'Poland')
 
 -- 5
-SELECT name, CONCAT(ROUND((population/80000000)*100, 0),'%') FROM world
-  WHERE continent = 'Europe' 
+SELECT name,
+   CONCAT(ROUND(100*population/(SELECT population FROM world WHERE name='Germany')),'%')
+FROM world
+WHERE continent='Europe'
 
 -- 6
 SELECT name FROM world 
